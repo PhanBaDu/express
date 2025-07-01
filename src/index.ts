@@ -3,7 +3,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './configs/db.connect'
 // [IMPORT ROUTES]
-import testRoute from './routes/test.route'
+import userRoute from './routes/user.route'
 
 // [ENVIRONMENT VARIABLES]
 dotenv.config()
@@ -11,8 +11,11 @@ dotenv.config()
 // [EXPRESS APP]
 const app = express()
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
 // [ROUTES]
-app.use('/api/test', testRoute)
+app.use('/api/user', userRoute)
 
 // [PORT]
 const port = process.env.PORT || 3001
